@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.MainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-11-25T15:53:37" hostname="UKC02G55NTML85" time="0.052">
+  <properties/>
+  <testcase name="[1] A, A" classname="org.example.MainTest" time="0.039"/>
+  <testcase name="[2] B,  A&#10;B B&#10; A" classname="org.example.MainTest" time="0.002"/>
+  <testcase name="[3] C,   A&#10; B B&#10;C   C&#10; B B&#10;  A" classname="org.example.MainTest" time="0.003"/>
+  <testcase name="[4] D,    A&#10;  B B&#10; C   C&#10;D     D&#10; C   C&#10;  B B&#10;   A" classname="org.example.MainTest" time="0.001"/>
+  <testcase name="[5] E,     A&#10;   B B&#10;  C   C&#10; D     D&#10;E       E&#10; D     D&#10;  C   C&#10;   B B&#10;    A" classname="org.example.MainTest" time="0.001"/>
+  <system-out><![CDATA[
+Input = A
+A
+
+Input = B
+ A
+B B
+ A
+
+Input = C
+  A
+ B B
+C   C
+ B B
+  A
+
+Input = D
+   A
+  B B
+ C   C
+D     D
+ C   C
+  B B
+   A
+
+Input = E
+    A
+   B B
+  C   C
+ D     D
+E       E
+ D     D
+  C   C
+   B B
+    A
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
