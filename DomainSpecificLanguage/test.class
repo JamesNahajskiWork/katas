@@ -1,0 +1,23 @@
+type=""
+context=""
+namespace=""
+
+test.deployApp(){
+    echo "deploying app"
+}
+
+test.context(){
+    context=${1}
+    echo "Set context to ${context}"
+}
+
+test.namespace(){
+    namespace=${1}
+    echo "Set namespace to ${namespace}"
+}
+
+test.type(){
+    type=${1}
+    echo "Set type to ${type}"
+}
+
