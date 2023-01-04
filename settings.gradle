@@ -2,4 +2,5 @@ rootProject.name = 'katas'
 include 'diamondLetters'
 include 'TimeFormatter'
 include 'ObservedPin'
+include 'DomainSpecificLanguage'
 
