@@ -3,4 +3,5 @@ include 'diamondLetters'
 include 'TimeFormatter'
 include 'ObservedPin'
 include 'DomainSpecificLanguage'
+include 'EvilCorp'
 
