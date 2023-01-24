@@ -32,4 +32,18 @@ public class WordCensorerTest {
                 Arguments.of("nice", "You are a NICE person nice", "You are a NICE person XXXX")
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("multipleWords")
+    public void ifMultipleWordsInLongerSentence(String[] wordsToCensor, String inputText, String expectedOutput) {
+        String censoredText = WordCensorer.censorWord(inputText, wordsToCensor);
+        assertEquals(expectedOutput, censoredText);
+    }
+
+    public static Stream<Arguments> multipleWords() {
+        return Stream.of(
+                Arguments.of(new String[] {"nice"}, "You are a nice person", "You are a XXXX person"),
+                Arguments.of(new String[] {"nice", "pony", "sun", "light", "fun", "happy", "funny", "joy"}, "Such a nice day with a bright sun, makes me happy", "Such a XXXX day with a bright XXX, makes me XXXXX")
+        );
+    }
 }
