@@ -1,14 +1,27 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class WordCensorer {
     public static String censorWord(String inputText, String wordToCensor) {
-        return inputText.replaceAll(wordToCensor, "X".repeat(wordToCensor.length()));
+        StringBuilder toReturn = new StringBuilder();
+        for (String wordInInputText: inputText.split(" ")) {
+            if (wordInInputText.startsWith(wordToCensor)) {
+                toReturn.append(" " + "X".repeat(wordInInputText.length()));
+            } else {
+                toReturn.append(" " + wordInInputText);
+            }
+        }
+        if (toReturn.isEmpty()) {
+            return "";
+        }
+        return toReturn.substring(1);
     }
 
     public static String censorWord(String inputText, String[] wordsToCensor) {
         String toReturn = inputText;
         for (String singleWordToCensor: wordsToCensor) {
-            toReturn = toReturn.replaceAll(singleWordToCensor, "X".repeat(singleWordToCensor.length()));
+            toReturn = censorWord(toReturn, singleWordToCensor);
         }
         return toReturn;
     }
