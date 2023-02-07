@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import org.example.service.MinesweeperService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -8,17 +10,20 @@ import java.util.HashMap;
 @CrossOrigin("http://localhost:3000")
 public class MinesweeperController {
 
+    @Autowired
+    MinesweeperService minesweeperService;
 
     @PostMapping("/sweep")
     public int[][] saveAssignments(@RequestBody HashMap<String, Integer> xAndY) {
-        System.out.println("x:" + xAndY.get("x"));
-        System.out.println("y:" + xAndY.get("y"));
-       return new int[][] {{-2,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1}};
-        // return new int[][] {{2,-1,1,1,1,-1},{-1,1,0,0,0,1},{-1,1,0,1,-1,-1},{-1,-1,1,-1,-1,-1}};
+//        System.out.println("x:" + xAndY.get("x"));
+//        System.out.println("y:" + xAndY.get("y"));
+        minesweeperService.playMove(xAndY.get("x"),xAndY.get("y"));
+        return minesweeperService.getGameState();
     }
 
     @GetMapping("/initial-state")
     public int[][] saveAssignments() {
-        return new int[][] {{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1}};
+        minesweeperService.resetBoard();
+        return minesweeperService.getGameState();
     }
 }
