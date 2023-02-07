@@ -1,4 +1,9 @@
 button {
-	padding: 30px;
+	padding: auto;
 	font-size: large;
+	height: 4em;
+	width: 4em;
+}
+.dead {
+	background-color: red;
 }
