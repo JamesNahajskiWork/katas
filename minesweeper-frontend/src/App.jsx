@@ -18,10 +18,16 @@ import axios from "axios";
 function App() {
 	const [alive, setAlive] = useState(true);
 	const [mines, setMines] = useState([]);
+	const [refresh, setrefresh] = useState(0);
+	const resetBoard = () => {
+		axios.get("http://localhost:8080/initial-state").then((res) => {
+			setAlive(true);
+			setMines(res.data);
+			setrefresh(refresh + 1);
+		});
+	};
 	useEffect(() => {
-		axios
-			.get("http://localhost:8080/initial-state")
-			.then((res) => setMines(res.data));
+		resetBoard();
 	}, [setMines]);
 
 	const pressSquare = (row, column) => {
@@ -53,14 +59,16 @@ function App() {
 				<tbody>
 					{mines
 						? mines.map((row, rowIndex) => (
-								<tr>
+								<tr key={rowIndex}>
 									{row.map((mine, columnIndex) => (
 										<Mine
+											key={rowIndex + "" + columnIndex}
 											mine={mine}
 											rowIndex={rowIndex}
 											columnIndex={columnIndex}
 											pressSquare={pressSquare}
 											alive={alive}
+											refresh={refresh}
 										/>
 									))}
 								</tr>
@@ -68,6 +76,13 @@ function App() {
 						: null}
 				</tbody>
 			</table>
+			<button
+				onClick={() => {
+					resetBoard();
+				}}
+			>
+				Reset
+			</button>
 		</div>
 	);
 }
