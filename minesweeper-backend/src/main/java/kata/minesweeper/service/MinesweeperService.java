@@ -1,4 +1,4 @@
-package org.example.service;
+package kata.minesweeper.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package org.example.controller;
+package kata.minesweeper.controller;
 
-import org.example.service.MinesweeperService;
+import kata.minesweeper.service.MinesweeperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
