@@ -6,4 +6,5 @@ include 'DomainSpecificLanguage'
 include 'EvilCorp'
 include 'minesweeper-backend'
 include 'draughts-backend'
+include 'java-game-framework'
 

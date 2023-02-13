@@ -1,2 +1,6 @@
 group 'kata.draughts'
 version 'unspecified'
+
+dependencies {
+    implementation project(":java-game-framework")
+}
