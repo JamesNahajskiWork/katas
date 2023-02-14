@@ -7,8 +7,8 @@ import kata.os.and.xs.interfaces.Player;
 import org.springframework.stereotype.Service;
 
 
-@Service
-public class JamesOsAndXsAgent implements OsAndXsAgent {
+
+public class StevesOsAndXsAgent implements OsAndXsAgent {
     @Override
     public PlayPiece<Player> findNextMove(Board<Player> boardState, int maxTimeAllowedToFindMoveMillis) {
         return null;
