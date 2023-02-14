@@ -6,17 +6,26 @@ import java.util.List;
 public class Board<T> {
     private static final int DEFAULT_SIZE = 10;
     private final List<List<T>> state;
+
     public Board(int boardSize) {
         this.state = new ArrayList<>();
         for (int i = 0; i < boardSize; i++) {
-            this.state.add(new ArrayList<>());
+            List<T> row = new ArrayList<>();
+            for (int j = 0; j < boardSize; j++) {
+                row.add(null);
+            }
+            this.state.add(row);
         }
     }
 
     public Board(Board<T> oldBoard) {
+        this(oldBoard.getState());
+    }
+
+    public Board(List<List<T>> state) {
         this.state = new ArrayList<>();
-        for (int i = 0; i < oldBoard.getState().size(); i++) {
-            this.state.add(new ArrayList<>(oldBoard.getRow(i)));
+        for (List<T> ts : state) {
+            this.state.add(new ArrayList<>(ts));
         }
     }
 
@@ -38,5 +47,9 @@ public class Board<T> {
 
     public void setCell(int column, int row, T value) {
         this.state.get(column).set(row, value);
+    }
+
+    public T getCellAtCoords(Coordinates coordinates) {
+        return getCell(coordinates.getRow(), coordinates.getColumn());
     }
 }

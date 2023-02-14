@@ -11,6 +11,6 @@ public class OsAndXsTools implements IGameTools<Player, PlayPiece<Player>> {
 
     @Override
     public boolean checkMoveIsValid(PlayPiece<Player> proposedMove, Board<Player> boardState) {
-        return false;
+        return boardState.getCellAtCoords(proposedMove.getCoordinates()) == null;
     }
 }
