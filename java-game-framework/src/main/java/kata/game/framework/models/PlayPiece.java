@@ -1,18 +1,12 @@
 package kata.game.framework.models;
 
-public class MovePiece<T> implements ITakeTurn<T> {
-    private final Coordinates oldPosition;
+public class PlayPiece<T> implements ITakeTurn<T> {
     private final Coordinates newPosition;
     private final T value;
 
-    public MovePiece(Coordinates oldPosition, Coordinates newPosition, T value) {
-        this.oldPosition = oldPosition;
+    public PlayPiece(Coordinates oldPosition, Coordinates newPosition, T value) {
         this.newPosition = newPosition;
         this.value = value;
-    }
-
-    public Coordinates getOldPosition() {
-        return oldPosition;
     }
 
     @Override

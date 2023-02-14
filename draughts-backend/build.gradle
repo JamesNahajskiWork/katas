@@ -1,4 +1,4 @@
-group 'kata.draughts'
+group 'kata.connect4'
 version 'unspecified'
 
 dependencies {

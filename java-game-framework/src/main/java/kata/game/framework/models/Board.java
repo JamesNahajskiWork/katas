@@ -3,9 +3,9 @@ package kata.game.framework.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board<T> {
+public abstract class Board<T> {
     private static final int DEFAULT_SIZE = 10;
-    private List<List<T>> state;
+    private final List<List<T>> state;
     public Board(int boardSize) {
         this.state = new ArrayList<>();
         for (int i = 0; i < boardSize; i++) {
@@ -36,10 +36,7 @@ public class Board<T> {
         return state.get(column).get(row);
     }
 
-    public void makeMove(MovePiece<T> proposedMove) {
-        T valueOfOldCell = proposedMove.getOldPosition().getContents();
-        T valueOfNewCell = proposedMove.getOldPosition().getContents();
-        state.get(proposedMove.getNewPosition().getColumn()).set(proposedMove.getNewPosition().getRow(), valueOfOldCell);
-        state.get(proposedMove.getOldPosition().getColumn()).set(proposedMove.getOldPosition().getRow(), valueOfNewCell);
+    public void setCell(int column, int row, T value) {
+        this.state.get(column).set(row, value);
     }
 }

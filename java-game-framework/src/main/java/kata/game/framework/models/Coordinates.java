@@ -1,9 +1,13 @@
 package kata.game.framework.models;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-public class Coordinates<T> {
-    private int row, column;
-    private T contents;
+@Getter
+public class Coordinates {
+    private final int row, column;
+
+    public Coordinates(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
 }

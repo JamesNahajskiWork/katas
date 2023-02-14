@@ -1,8 +1,10 @@
 package kata.game.framework.service;
 
+import java.util.List;
 import java.util.concurrent.*;
 
 import kata.game.framework.models.Board;
+import kata.game.framework.models.ITakeTurn;
 import kata.game.framework.models.MovePiece;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +16,17 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  * @param <Q> The type that is used to represent the value of a given board state
  */
 @Service
-public class GameService<T, Q extends Number & Comparable<Q>> {
+public class GameService<T, Q extends Number & Comparable<Q>, V extends ITakeTurn<T>> {
     private final static int EVALUATE_POSITION_TIMEOUT = 1000, FIND_NEXT_MOVE_TIMEOUT = 5000;
-    private final IGameAgent<T, Q> aiPlayer1;
+    private final IGameAgent<T, Q, V> aiPlayer1;
     private final ExecutorService executor = Executors.newCachedThreadPool();
 
-    public GameService(IGameAgent<T, Q> aiPlayer1) {
+    public GameService(IGameAgent<T, Q, V> aiPlayer1) {
         this.aiPlayer1 = aiPlayer1;
     }
 
-    public MovePiece<T> askAiForMove(Board<T> boardState) throws ExecutionException, InterruptedException, TimeoutException {
-        Callable<MovePiece<T>> evaluateBoardStateCall = () -> {
+    public V askAiForMove(Board<T> boardState) throws ExecutionException, InterruptedException, TimeoutException {
+        Callable<V> evaluateBoardStateCall = () -> {
             return aiPlayer1.findNextMove(boardState, 5000);
         };
         return callWithTimeout(evaluateBoardStateCall, 5000);

@@ -1,8 +1,8 @@
-package kata.draughts.agents;
+package kata.connect4.agents;
 
 import kata.game.framework.service.IGameAgent;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface IDraughtsAgent extends IGameAgent<Integer, Integer> {
+public interface IConnect4Agent extends IGameAgent<Integer, Integer> {
 }
