@@ -5,6 +5,6 @@ include 'ObservedPin'
 include 'DomainSpecificLanguage'
 include 'EvilCorp'
 include 'minesweeper-backend'
-include 'draughts-backend'
+include 'connect4'
 include 'java-game-framework'
 
