@@ -5,7 +5,6 @@ import java.util.concurrent.*;
 
 import kata.game.framework.models.Board;
 import kata.game.framework.models.ITakeTurn;
-import kata.game.framework.models.MovePiece;
 import org.springframework.stereotype.Service;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;

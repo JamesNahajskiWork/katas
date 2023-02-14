@@ -3,8 +3,6 @@ package kata.connect4.service;
 import kata.connect4.agents.IConnect4Agent;
 import kata.game.framework.InvalidMoveException;
 import kata.game.framework.models.Board;
-import kata.game.framework.models.ITakeTurn;
-import kata.game.framework.models.MovePiece;
 import kata.game.framework.models.PlayPiece;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +21,7 @@ public class Connect4Controller {
     public Board<Integer> getAiNextMove(Board<Integer> boardState) throws ExecutionException, InterruptedException, TimeoutException, InvalidMoveException {
         PlayPiece<Integer> proposedMove = this.gameService.askAiForMove(boardState);
         if (IConnect4Tools.checkMoveIsValid(proposedMove, boardState)) {
-            proposedMove.makeMove(boardState);
+            proposedMove.takeTurn(boardState);
             return boardState;
         }
         throw new InvalidMoveException(proposedMove);
