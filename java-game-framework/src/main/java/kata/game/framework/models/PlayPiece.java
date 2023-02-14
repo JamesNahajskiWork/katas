@@ -19,4 +19,8 @@ public class PlayPiece<T> implements ITakeTurn<T> {
     public String exceptionLogging() {
         return "Tried to play " + value + ", at column " + newPosition.getColumn() + ", row " + newPosition.getRow();
     }
+
+    public Coordinates getCoordinates() {
+        return this.newPosition;
+    }
 }

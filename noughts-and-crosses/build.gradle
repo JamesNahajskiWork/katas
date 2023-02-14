@@ -1,0 +1,6 @@
+group 'kata.connect4'
+version 'unspecified'
+
+dependencies {
+    implementation project(":java-game-framework")
+}

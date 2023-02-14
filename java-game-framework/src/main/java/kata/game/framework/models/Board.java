@@ -3,7 +3,7 @@ package kata.game.framework.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Board<T> {
+public class Board<T> {
     private static final int DEFAULT_SIZE = 10;
     private final List<List<T>> state;
     public Board(int boardSize) {
