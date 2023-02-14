@@ -3,7 +3,7 @@ package kata.game.framework.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board<T> {
+public class Board<T extends IPlayer> {
     private static final int DEFAULT_SIZE = 10;
     private final List<List<T>> state;
 
@@ -13,6 +13,7 @@ public class Board<T> {
             List<T> row = new ArrayList<>();
             for (int j = 0; j < boardSize; j++) {
                 row.add(null);
+
             }
             this.state.add(row);
         }
@@ -50,6 +51,6 @@ public class Board<T> {
     }
 
     public T getCellAtCoords(Coordinates coordinates) {
-        return getCell(coordinates.getRow(), coordinates.getColumn());
+        return getCell(coordinates.row(), coordinates.column());
     }
 }

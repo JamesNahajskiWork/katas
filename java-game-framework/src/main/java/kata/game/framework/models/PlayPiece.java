@@ -1,6 +1,6 @@
 package kata.game.framework.models;
 
-public class PlayPiece<T> implements ITakeTurn<T> {
+public class PlayPiece<T extends IPlayer> implements ITakeTurn<T> {
     private final Coordinates newPosition;
     private final T value;
 
@@ -12,12 +12,12 @@ public class PlayPiece<T> implements ITakeTurn<T> {
 
     @Override
     public void takeTurn(Board<T> boardStateBefore) {
-        boardStateBefore.setCell(newPosition.getColumn(), newPosition.getRow(), value);
+        boardStateBefore.setCell(newPosition.column(), newPosition.row(), value);
     }
 
     @Override
     public String exceptionLogging() {
-        return "Tried to play " + value + ", at column " + newPosition.getColumn() + ", row " + newPosition.getRow();
+        return "Tried to play " + value + ", at column " + newPosition.column() + ", row " + newPosition.row();
     }
 
     public Coordinates getCoordinates() {

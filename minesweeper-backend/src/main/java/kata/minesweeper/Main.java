@@ -1,5 +1,4 @@
-package kata.os.and.xs;
-
+package kata.minesweeper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,3 +8,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
+
+
+
+

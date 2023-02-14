@@ -1,5 +1,8 @@
 package kata.os.and.xs.interfaces;
 
-public enum Player {
-    O, X
+import kata.game.framework.models.IPlayer;
+
+public enum Player implements IPlayer {
+    O, X;
+
 }
