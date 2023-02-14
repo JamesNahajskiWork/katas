@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
+/**
+ *
+ * @param <T> The type that represents the value of a single square within the board
+ * @param <Q> The type that is used to represent the value of a given board state
+ */
 @Service
 public class GameService<T, Q extends Number & Comparable<Q>> {
     private final static int EVALUATE_POSITION_TIMEOUT = 1000, FIND_NEXT_MOVE_TIMEOUT = 5000;

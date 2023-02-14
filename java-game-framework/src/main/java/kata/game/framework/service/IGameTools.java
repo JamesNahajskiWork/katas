@@ -4,5 +4,5 @@ import kata.game.framework.models.Board;
 import kata.game.framework.models.MovePiece;
 
 public interface IGameTools<T> {
-    boolean validateMove(MovePiece<T> proposedMove, Board<T> boardState);
+    boolean checkMoveIsValid(MovePiece<T> proposedMove, Board<T> boardState);
 }

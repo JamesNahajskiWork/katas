@@ -11,18 +11,16 @@ import java.util.concurrent.TimeoutException;
 
 @RestController
 public class DraughtsController {
-    private final IDraughtsAgent iDraughtsAgent;
     private final DraughtsService gameService;
-    private final DraughtsTools draughtsTools;
+    private final IDraughtsTools IDraughtsTools;
 
-    public DraughtsController(IDraughtsAgent iDraughtsAgent, DraughtsTools draughtsTools) {
-        this.iDraughtsAgent = iDraughtsAgent;
-        this.gameService = new DraughtsService(iDraughtsAgent);
-        this.draughtsTools = draughtsTools;
+    public DraughtsController(IDraughtsAgent IDraughtsAgent, IDraughtsTools IDraughtsTools) {
+        this.gameService = new DraughtsService(IDraughtsAgent);
+        this.IDraughtsTools = IDraughtsTools;
     }
     public Board<Integer> getAiNextMove(Board<Integer> boardState) throws ExecutionException, InterruptedException, TimeoutException, InvalidMoveException {
         MovePiece<Integer> proposedMove = this.gameService.askAiForMove(boardState);
-        if (draughtsTools.validateMove(proposedMove, boardState)) {
+        if (IDraughtsTools.checkMoveIsValid(proposedMove, boardState)) {
             boardState.makeMove(proposedMove);
             return boardState;
         }
