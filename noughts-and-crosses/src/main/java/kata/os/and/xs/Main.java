@@ -1,4 +1,4 @@
-package kata.connect4;
+package kata.os.and.xs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
