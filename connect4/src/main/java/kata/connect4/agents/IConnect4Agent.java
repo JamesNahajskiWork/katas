@@ -5,6 +5,5 @@ import kata.game.framework.models.PlayPiece;
 import kata.game.framework.service.IGameAgent;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface IConnect4Agent extends IGameAgent<Integer, Integer, PlayPiece<Integer>> {
 }
