@@ -45,11 +45,11 @@ public class Board<T extends IPlayer> {
     }
 
     public T getCell(int row, int column) {
-        return state.get(column).get(row);
+        return state.get(row).get(column);
     }
 
     public void setCell(int column, int row, T value) {
-        this.state.get(column).set(row, value);
+        this.state.get(row).set(column, value);
     }
 
     public T getCellAtCoords(@NonNull Coordinates coordinates) {

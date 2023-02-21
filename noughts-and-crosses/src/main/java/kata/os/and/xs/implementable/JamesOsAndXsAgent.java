@@ -22,6 +22,7 @@ public class JamesOsAndXsAgent implements OsAndXsAgent {
         throw new RuntimeException("No valid move found");
     }
 
+//    Loss 0, Win 1, Draw 0.5, Not over yet -1
     @Override
     public Integer evaluateBoardState(Board<Player> boardState) {
         return null;

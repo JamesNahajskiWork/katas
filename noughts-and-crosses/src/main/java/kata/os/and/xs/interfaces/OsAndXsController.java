@@ -16,8 +16,8 @@ public class OsAndXsController {
     private final OsAndXsService gameService;
     private final OsAndXsTools gameTools;
 
-    public OsAndXsController(OsAndXsAgent connect4Agent, OsAndXsTools gameTools) {
-        this.gameService = new OsAndXsService(connect4Agent);
+    public OsAndXsController(OsAndXsAgent osAndXsAgent, OsAndXsTools gameTools) {
+        this.gameService = new OsAndXsService(osAndXsAgent);
         this.gameTools = gameTools;
     }
 
