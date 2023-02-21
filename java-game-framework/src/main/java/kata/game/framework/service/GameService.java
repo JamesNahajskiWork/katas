@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import kata.game.framework.models.Board;
+import kata.game.framework.models.IPlayer;
 import kata.game.framework.models.ITakeTurn;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  * @param <Q> The type that is used to represent the value of a given board state
  */
 @Service
-public class GameService<T, Q extends Number & Comparable<Q>, V extends ITakeTurn<T>> {
+public class GameService<T extends IPlayer, Q extends Number & Comparable<Q>, V extends ITakeTurn<T>> {
     private final static int EVALUATE_POSITION_TIMEOUT = 500, FIND_NEXT_MOVE_TIMEOUT = 5000;
     private final IGameAgent<T, Q, V> aiPlayer1;
     private final ExecutorService executor = Executors.newCachedThreadPool();

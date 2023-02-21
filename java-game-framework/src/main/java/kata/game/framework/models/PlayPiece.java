@@ -1,23 +1,25 @@
 package kata.game.framework.models;
 
+import lombok.NonNull;
+
 public class PlayPiece<T extends IPlayer> implements ITakeTurn<T> {
     private final Coordinates newPosition;
-    private final T value;
+    private final T newValue;
 
-    public PlayPiece(Coordinates newPosition, T value) {
+    public PlayPiece(@NonNull Coordinates newPosition, @NonNull T newValue) {
         this.newPosition = newPosition;
-        this.value = value;
+        this.newValue = newValue;
     }
 
 
     @Override
     public void takeTurn(Board<T> boardStateBefore) {
-        boardStateBefore.setCell(newPosition.column(), newPosition.row(), value);
+        boardStateBefore.setCell(newPosition.column(), newPosition.row(), newValue);
     }
 
     @Override
     public String exceptionLogging() {
-        return "Tried to play " + value + ", at column " + newPosition.column() + ", row " + newPosition.row();
+        return "Tried to play " + newValue + ", at column " + newPosition.column() + ", row " + newPosition.row();
     }
 
     public Coordinates getCoordinates() {

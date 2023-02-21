@@ -1,7 +1,7 @@
 package kata.game.framework.models;
 
 import lombok.Getter;
+import lombok.NonNull;
 
-@Getter
-public record Coordinates(int row, int column) {
+public record Coordinates(@NonNull Integer row, @NonNull Integer column) {
 }

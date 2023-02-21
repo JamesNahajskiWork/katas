@@ -1,5 +1,6 @@
 package kata.connect4.service;
 
+import kata.game.framework.GameOverException;
 import kata.game.framework.models.Board;
 import kata.game.framework.models.PlayPiece;
 import kata.game.framework.service.IGameTools;
@@ -13,5 +14,10 @@ public class Connect4Tools implements IGameTools<Integer, PlayPiece<Integer>> {
         int proposedColumn = proposedMove.getCoordinates().column();
         int proposedRow = proposedMove.getCoordinates().row();
         return false; //TODO: fix
+    }
+
+    @Override
+    public boolean checkIfGameIsOver(Board<Integer> gameState) throws GameOverException {
+        return false;
     }
 }

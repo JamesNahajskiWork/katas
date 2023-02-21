@@ -1,5 +1,7 @@
 package kata.game.framework.models;
 
+import lombok.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,7 @@ public class Board<T extends IPlayer> {
         this.state.get(column).set(row, value);
     }
 
-    public T getCellAtCoords(Coordinates coordinates) {
+    public T getCellAtCoords(@NonNull Coordinates coordinates) {
         return getCell(coordinates.row(), coordinates.column());
     }
 }
