@@ -6,9 +6,11 @@ import kata.game.framework.models.Board;
 import kata.game.framework.models.ITakeTurn;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public interface IGameTools<T extends IPlayer, V extends ITakeTurn<T>> {
     boolean checkMoveIsValid(V proposedMove, Board<T> boardState);
 
-    boolean checkIfGameIsOver(Board<T> gameState) throws GameOverException;
+    Optional<T> checkIfGameIsOver(Board<T> gameState) throws GameOverException;
 }

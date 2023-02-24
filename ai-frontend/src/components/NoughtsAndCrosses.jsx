@@ -1,6 +1,7 @@
-import { useReducer, useEffect, React } from "react";
+import { useReducer, useEffect, React, useState } from "react";
 import Cell from "./Cell";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const NoughtsAndCrosses = () => {
 	const getInitialBoardState = () => {
@@ -14,6 +15,8 @@ const NoughtsAndCrosses = () => {
 	useEffect(() => {
 		getInitialBoardState();
 	}, []);
+
+	const [gameWinner, setGameWinner] = useState(null);
 
 	const updateBoardState = (prevState, params) => {
 		switch (params.type) {
@@ -37,10 +40,18 @@ const NoughtsAndCrosses = () => {
 					newPosition: { column: x, row: y },
 				},
 			})
-			.then((res) =>
-				dispatch({ type: "fullUpdate", newState: res.data.state })
-			);
+			.then((res) => {
+				dispatch({
+					type: "fullUpdate",
+					newState: res.data.boardState.state,
+				});
+				setGameWinner(res.data.winner);
+				if (res.data.winner !== null) {
+					toast.success(res.data.winner + " won");
+				}
+			});
 	};
+	console.log(gameWinner);
 	return (
 		<table>
 			{boardState
@@ -58,6 +69,9 @@ const NoughtsAndCrosses = () => {
 														x: columnIndex,
 														y: rowIndex,
 													})
+												}
+												disabledButton={
+													gameWinner !== null
 												}
 											/>
 										</td>
