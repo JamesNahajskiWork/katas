@@ -44,6 +44,9 @@ public class OsAndXsTools implements IGameTools<Player, PlayPiece<Player>> {
                 return Optional.of(central);
             }
         }
+        if (gameState.isFull()) {
+            return Optional.of(Player.DRAW);
+        }
         return Optional.empty();
     }
 }

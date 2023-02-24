@@ -40,8 +40,8 @@ public class Board<T extends IPlayer> {
         return state;
     }
 
-    public List<T> getRow(int column) {
-        return state.get(column);
+    public List<T> getRow(int row) {
+        return state.get(row);
     }
 
     public T getCell(int row, int column) {
@@ -54,5 +54,24 @@ public class Board<T extends IPlayer> {
 
     public T getCellAtCoords(@NonNull Coordinates coordinates) {
         return getCell(coordinates.row(), coordinates.column());
+    }
+
+    public boolean isFull() {
+        for (List<T> row : state) {
+            for (T cell : row) {
+                if (cell == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public List<T> getColumn(int column) {
+        List<T> toReturn = new ArrayList<>();
+        for (List<T> row : state) {
+            toReturn.add(row.get(column));
+        }
+        return toReturn;
     }
 }

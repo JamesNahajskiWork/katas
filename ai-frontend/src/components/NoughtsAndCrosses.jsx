@@ -16,7 +16,7 @@ const NoughtsAndCrosses = () => {
 		getInitialBoardState();
 	}, []);
 
-	const [gameWinner, setGameWinner] = useState(null);
+	const [gameWinner, setGameOver] = useState(false);
 
 	const updateBoardState = (prevState, params) => {
 		switch (params.type) {
@@ -45,9 +45,22 @@ const NoughtsAndCrosses = () => {
 					type: "fullUpdate",
 					newState: res.data.boardState.state,
 				});
-				setGameWinner(res.data.winner);
+
 				if (res.data.winner !== null) {
-					toast.success(res.data.winner + " won");
+					setGameOver(true);
+					switch (res.data.winner) {
+						case "X":
+							toast.success(res.data.winner + "'s won");
+							break;
+						case "O":
+							toast.error(res.data.winner + "'s won");
+							break;
+						default:
+							toast("It was a draw", {
+								icon: "🟰",
+							});
+							break;
+					}
 				}
 			});
 	};
@@ -70,9 +83,7 @@ const NoughtsAndCrosses = () => {
 														y: rowIndex,
 													})
 												}
-												disabledButton={
-													gameWinner !== null
-												}
+												disabledButton={gameWinner}
 											/>
 										</td>
 									);

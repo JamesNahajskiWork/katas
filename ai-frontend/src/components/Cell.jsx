@@ -1,12 +1,6 @@
 import React from "react";
 
-const Cell = ({
-	cellValue,
-	playMove,
-	rowIndex,
-	columnIndex,
-	disabledButton,
-}) => {
+const Cell = ({ cellValue, playMove, disabledButton }) => {
 	console.log(disabledButton);
 	return (
 		<button onClick={() => playMove()} disabled={disabledButton}>
