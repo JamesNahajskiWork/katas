@@ -18,7 +18,7 @@ public class OsAndXsTools implements IGameTools<Player, PlayPiece<Player>> {
     }
 
     @Override
-    public Optional<Player> checkIfGameIsOver(Board<Player> gameState) throws GameOverException {
+    public Optional<Player> checkIfGameIsOver(Board<Player> gameState) {
         int[][] diagDirections = {{1, 1}, {1, -1}};
         for (int[] direction : diagDirections) {
             Player central = gameState.getCell(1, 1);

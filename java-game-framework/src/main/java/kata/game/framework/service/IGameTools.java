@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface IGameTools<T extends IPlayer, V extends ITakeTurn<T>> {
     boolean checkMoveIsValid(V proposedMove, Board<T> boardState);
 
-    Optional<T> checkIfGameIsOver(Board<T> gameState) throws GameOverException;
+    Optional<T> checkIfGameIsOver(Board<T> gameState);
 }

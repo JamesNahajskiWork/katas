@@ -7,9 +7,21 @@ import kata.os.and.xs.interfaces.OsAndXsAgent;
 import kata.os.and.xs.interfaces.Player;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class JamesOsAndXsAgent implements OsAndXsAgent {
+    private final Player agentPlayer;
+    private final OsAndXsTools osAndXsTools;
+
+    public JamesOsAndXsAgent(OsAndXsTools osAndXsTools) {
+        this.agentPlayer = Player.O;
+        this.osAndXsTools = osAndXsTools;
+    }
+
+
+
     @Override
     public PlayPiece<Player> findNextMove(Board<Player> boardState, int maxTimeAllowedToFindMoveMillis) {
         for (int y = 0; y < 3; y++) {
@@ -24,7 +36,18 @@ public class JamesOsAndXsAgent implements OsAndXsAgent {
 
 //    Loss 0, Win 1, Draw 0.5, Not over yet -1
     @Override
-    public Integer evaluateBoardState(Board<Player> boardState) {
-        return null;
+    public Double evaluateBoardState(Board<Player> boardState) {
+        Optional<Player> winnerOrNull = osAndXsTools.checkIfGameIsOver(boardState);
+        if (winnerOrNull.isEmpty()) {
+            return -1D;
+        }
+        Player winner = winnerOrNull.get();
+        if (winner == agentPlayer) {
+            return 1D;
+        }
+        if (winner == Player.DRAW) {
+            return 0.5D;
+        }
+        return 0D;
     }
 }

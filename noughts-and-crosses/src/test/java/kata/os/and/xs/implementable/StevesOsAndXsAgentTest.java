@@ -16,7 +16,7 @@ class StevesOsAndXsAgentTest {
 
         Board<Player> noughtsAndCrossesBoard = new Board<Player>(3);
 
-        Integer integer = agent.evaluateBoardState(noughtsAndCrossesBoard);
+        Double aDouble = agent.evaluateBoardState(noughtsAndCrossesBoard);
 
     }
 

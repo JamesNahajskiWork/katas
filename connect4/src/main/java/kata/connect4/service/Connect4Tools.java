@@ -17,7 +17,7 @@ public class Connect4Tools implements IGameTools<Integer, PlayPiece<Integer>> {
     }
 
     @Override
-    public boolean checkIfGameIsOver(Board<Integer> gameState) throws GameOverException {
+    public boolean checkIfGameIsOver(Board<Integer> gameState) {
         return false;
     }
 }

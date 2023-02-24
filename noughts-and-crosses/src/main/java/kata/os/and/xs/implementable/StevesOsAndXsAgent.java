@@ -15,7 +15,7 @@ public class StevesOsAndXsAgent implements OsAndXsAgent {
     }
 
     @Override
-    public Integer evaluateBoardState(Board<Player> boardState) {
+    public Double evaluateBoardState(Board<Player> boardState) {
         return null;
     }
 }

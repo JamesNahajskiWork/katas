@@ -5,7 +5,7 @@ import kata.game.framework.service.GameService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OsAndXsService extends GameService<Player, Integer, PlayPiece<Player>> {
+public class OsAndXsService extends GameService<Player, Double, PlayPiece<Player>> {
     public OsAndXsService(OsAndXsAgent aiPlayer1) {
         super(aiPlayer1);
     }
