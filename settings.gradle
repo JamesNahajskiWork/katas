@@ -8,3 +8,5 @@ include 'minesweeper-backend'
 include 'connect4'
 include 'java-game-framework'
 include 'noughts-and-crosses'
+include 'Annotation'
+
