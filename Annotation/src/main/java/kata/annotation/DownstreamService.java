@@ -37,10 +37,17 @@ public class DownstreamService {
         }
     }
 
-    @TimeoutAnnotation(timeout = 1000)
+//    @MockMethods
     public void getAddress(DataObject dataObject) {
         for (int i = 0; i < 10; i++) {
             dataObject.getName();
         }
+    }
+
+//    @TimeoutAnnotation(timeout = 500)
+    public String slowCall(String url) throws InterruptedException, IOException {
+        Thread.sleep(1000);
+        HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
+        return String.valueOf(httpClient.send(request, HttpResponse.BodyHandlers.ofString()).statusCode());
     }
 }

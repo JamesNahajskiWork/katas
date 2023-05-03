@@ -1,8 +1,6 @@
 package kata.annotation;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import kata.annotation.annotations.TimerWrapperAnnotation;
 import org.springframework.stereotype.Service;
 
 import java.lang.annotation.Annotation;
@@ -22,23 +20,32 @@ public class MethodAnnotationProcessor {
             Optional<Annotation> wrapperAnnotation = Arrays.stream(method.getAnnotations()).filter(s -> s.annotationType().getName().endsWith("WrapperAnnotation")).findFirst();
 //            System.out.println(wrapperAnnotation.isPresent());
             if (wrapperAnnotation.isPresent()) {
-                Annotation annotation = wrapperAnnotation.get();
-                Field beforeFunction = annotation.annotationType().getField("beforeFunction");
-//                System.out.println("Assignable 1" + Runnable.class.isAssignableFrom(beforeFunction.getType()));
-                if (Runnable.class.isAssignableFrom(beforeFunction.getType())) {
-                    Runnable beforeRunnable = (Runnable) beforeFunction.get(annotation);
-                    beforeRunnable.run();
-                }
-                method.invoke(downstreamService, params);
-                Field afterFunction = annotation.annotationType().getField("afterFunction");
-//                System.out.println("Assignable 2" + Supplier.class.isAssignableFrom(afterFunction.getType()));
-                if (Supplier.class.isAssignableFrom(afterFunction.getType())) {
-                    Object returnType = ((Supplier<?>) afterFunction.get(annotation)).get();
-                    System.out.printf("Method took %s milliseconds%n", returnType);
-                }
+                processWrapperAnnotation(downstreamService, method, wrapperAnnotation, params);
             }
         }
 
+
+    }
+
+    private static void processWrapperAnnotation(DownstreamService downstreamService, Method method, Optional<Annotation> wrapperAnnotation, Object[] params) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException {
+        Annotation annotation = wrapperAnnotation.get();
+        Field beforeFunction = annotation.annotationType().getField("beforeFunction");
+//                System.out.println("Assignable 1" + Runnable.class.isAssignableFrom(beforeFunction.getType()));
+        if (Runnable.class.isAssignableFrom(beforeFunction.getType())) {
+            Runnable beforeRunnable = (Runnable) beforeFunction.get(annotation);
+            beforeRunnable.run();
+        }
+        method.invoke(downstreamService, params);
+        Field afterFunction = annotation.annotationType().getField("afterFunction");
+//                System.out.println("Assignable 2" + Supplier.class.isAssignableFrom(afterFunction.getType()));
+        if (Supplier.class.isAssignableFrom(afterFunction.getType())) {
+            Object returnType = ((Supplier<?>) afterFunction.get(annotation)).get();
+            System.out.printf("Method took %s milliseconds%n", returnType);
+        }
+    }
+
+
+    public void callMethodWithWrapper2(Function<String, String> toCall, String s) {
 
     }
 }
